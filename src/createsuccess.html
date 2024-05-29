@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .bg-left {
+            background-color: #F3ECDC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .success-message {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        .success-message h1 {
+            font-family: 'Abril Fatface', cursive;
+            font-size: 3rem;
+            color: #344E41;
+        }
+        .success-message p {
+            color: #588157;
+        }
+        .back-button {
+            padding: 10px 20px;
+            background-color: #588157;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #344E41;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-left">
+        <div class="success-message">
+            <h1>Registration Successful</h1>
+            <p>Congratulations! Your account has been created successfully.</p>
+            <button class="back-button" onclick="window.location.href='login1.html'">Go to Login</button>
+        </div>
+    </div>
+</body>
+</html>

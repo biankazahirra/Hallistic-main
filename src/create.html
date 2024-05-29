@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>Create Account Hallistic</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Kustomisasi warna dan font family */
+        .bg-green {
+            background-color: #344E41;
+        }
+        .bg-left {
+            background-color: #F3ECDC;
+        }
+        .abrilfatface {
+            font-family: 'Abril Fatface', cursive;
+        }
+        .poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .bg-image {
+            background-image: url('../public/asset/Rectangle 11 (1).png');
+            background-size: auto;
+            background-position: center;
+        }
+        /* Kustomisasi ukuran input */
+        .input-text {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 400px;
+            background-color: transparent;
+            border-radius: 8px; /* border bulat */
+        }
+        /* Tombol back */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #588157;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #344E41;
+        }
+        /* Tombol sign up */
+        .signup-button {
+            width: 400px;
+            margin: 0 auto; /* Memposisikan tombol ke tengah */
+            padding: 10px 20px;
+            background-color: #588157;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .signup-button:hover {
+            background-color: #344E41;
+        }
+
+        /* Notifikasi error */
+        .error-msg {
+            text-align: center;
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="2xl:container h-screen m-auto flex relative">
+        <!-- Ruas sebelah kiri -->
+        <div class="relative h-full w-6/12 bg-left flex flex-col items-center justify-center">
+            <!-- Tombol back -->
+            <div class="text-center mt-16">
+                <h1 class="text-3xl text-dlr abrilfatface mt-5">SIGN UP</h1>
+                <p class="text-abu poppins text-sm mt-5">Please enter your details.</p>
+                <form action="create.php" method="post" class="mt-6 flex flex-col items-start" onsubmit="return validateForm()">
+                    <label for="name" class="block text-black text-sm font-medium poppins mb-2 mt-3">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" class="input-text mb-4" required>
+                    <label for="email" class="block text-black text-sm font-medium poppins mb-2">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" class="input-text mb-4" required>
+                    <label for="password" class="block text-black text-sm font-medium poppins mb-2 mt-3">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" class="input-text mb-4" required>
+                    <div id="password-error" class="error-msg"></div><br>
+                    <input type="submit" name="create" value="Sign Up" class="signup-button poppins">
+                </form>
+                <div id="error-msg" class="error-msg <?php echo isset($_GET['error']) ? 'block' : 'none'; ?>">
+                    <?php echo isset($_SESSION['error_msg']) ? $_SESSION['error_msg'] : ''; ?>
+                </div>                
+                <div class="text-center mt-6">
+                    <p class="text-abu poppins text-xs">Already have an account? <a href="login1.html" class="text-green-600">Log In!</a></p>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="javascript:history.go(-1);" class="text-green-600 poppins text-sm">Back</a>
+                </div>
+            </div>
+        </div>
+        <!-- Ruas sebelah kanan -->
+        <div class="relative h-full w-6/12 bg-image flex items-center justify-center">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <img src="../public/asset/Group 7533.svg" alt="Group 7533">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk validasi formulir
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+
+            if (password.length < 8 && password !== '' && name !== '' && email !== '') {
+                // Tampilkan pesan error jika password kurang dari 8 karakter
+                document.getElementById("password-error").innerText = "Password must be at least 8 characters long.";
+                document.getElementById("password-error").style.display = "block";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
